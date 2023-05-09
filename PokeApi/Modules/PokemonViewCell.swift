@@ -33,12 +33,21 @@ class PokemonViewCell: UITableViewCell {
         return label
     }()
     
+    let pokeView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.backgroundColor = .white
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = .clear
         backgroundColor = .clear
         self.contentView.addSubview(backView)
         self.contentView.addSubview(name)
+        self.contentView.addSubview(pokeView)
         setupConstraints()
     }
 
@@ -59,6 +68,15 @@ class PokemonViewCell: UITableViewCell {
             name.topAnchor.constraint(equalTo: backView.topAnchor, constant: 10),
             name.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
             name.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            pokeView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 40),
+            pokeView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+
+            pokeView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
+            pokeView.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -10)
+
         ])
     }
     
